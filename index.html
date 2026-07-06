@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ma Calculatrice</title>
+  <style>
+    /* Style global pour centrer la calculatrice */
+    body {
+      margin: 0px;
+      padding: 0px;
+      background-color: #f0f0f0;
+    }
 
+    /* La boîte de la calculatrice */
+    .calculator {
+      width: 550px;  
+      height: 350px;
+      background-color: white;
+      border: 1px solid #FFDAC1;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 100px auto; /* Centrage simple et classique */
+      font-weight: bold;
+    }
+
+    /* L'écran d'affichage */
+    .display {
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 2px solid #FFDAC1;
+      box-sizing: border-box;
+    }
+
+    /* Zone qui contient tous les boutons */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr); /* 6 colonnes */
+      gap: 5px;
+    }
+
+    /* Style pour tous les boutons */
+    .buttons input {
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      background-color: #FFB7B2;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Effet au survol de la souris */
+    .buttons input:hover {
+      background-color: #D2B48C;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <input type="text" id="ecran" class="display" readonly />
+
+    <div class="buttons">
+      <input type="button" value="1" onclick="ajouterAuDisplay('1')">
+      <input type="button" value="2" onclick="ajouterAuDisplay('2')">
+      <input type="button" value="3" onclick="ajouterAuDisplay('3')">
+      <input type="button" value="4" onclick="ajouterAuDisplay('4')">
+      <input type="button" value="5" onclick="ajouterAuDisplay('5')">
+      <input type="button" value="6" onclick="ajouterAuDisplay('6')">
+      
+      <input type="button" value="7" onclick="ajouterAuDisplay('7')">
+      <input type="button" value="8" onclick="ajouterAuDisplay('8')">
+      <input type="button" value="9" onclick="ajouterAuDisplay('9')">
+      <input type="button" value="0" onclick="ajouterAuDisplay('0')">
+      <input type="button" value="C" onclick="viderEcran()">
+      <input type="button" value="⌫" onclick="effacerUnCaractere()">
+      
+      <input type="button" value="*" onclick="ajouterAuDisplay('*')">
+      <input type="button" value="+" onclick="ajouterAuDisplay('+')">
+      <input type="button" value="-" onclick="ajouterAuDisplay('-')">
+      <input type="button" value="/" onclick="ajouterAuDisplay('/')">
+      <input type="button" value="!" onclick="ajouterAuDisplay('!')">
+      <input type="button" value="." onclick="ajouterPoint()">
+      
+      <input type="button" value="," onclick="ajouterAuDisplay(',')">
+      <input type="button" value="%" onclick="ajouterAuDisplay('%')">
+      <input type="button" value="cos(" onclick="ajouterAuDisplay('cos(')">
+      <input type="button" value="sin(" onclick="ajouterAuDisplay('sin(')">
+      <input type="button" value="tan(" onclick="ajouterAuDisplay('tan(')">
+      <input type="button" value="e" onclick="ajouterAuDisplay('e')">
+      
+      <input type="button" value="pi" onclick="ajouterAuDisplay('pi')">
+      <input type="button" value="^" onclick="ajouterAuDisplay('^(')">
+      <input type="button" value="(" onclick="ajouterAuDisplay('(')">
+      <input type="button" value=")" onclick="ajouterAuDisplay(')')">
+      <input type="button" value="log(" onclick="ajouterAuDisplay('log(')">
+      <input type="button" value="sqrt(" onclick="ajouterAuDisplay('sqrt(')">
+      
+      <input type="button" value="log2(" onclick="ajouterAuDisplay('log2(')">
+      <input type="button" value="log10(" onclick="ajouterAuDisplay('log10(')">
+      <input type="button" value="l2e" onclick="ajouterAuDisplay('1.4426950408889634')">
+      <input type="button" value="l10e" onclick="ajouterAuDisplay('0.4342944819032518')">
+      <input type="button" value="exp(" onclick="ajouterAuDisplay('exp(')">
+      
+      <input type="button" value="=" onclick="faireLeCalcul()">
+    </div>
+  </div>
+
+  <script>
+    // Récupération de l'élément écran
+    var monEcran = document.getElementById("ecran");
+
+    // Fonction basique pour ajouter du texte sur l'écran
+    function ajouterAuDisplay(valeur) {
+      monEcran.value = monEcran.value + valeur;
+    }
+
+    // Fonction pour tout effacer (Bouton C)
+    function viderEcran() {
+      monEcran.value = "";
+    }
+
+    // Fonction Retour (Bouton Reculer)
+    function effacerUnCaractere() {
+      var texteActuel = monEcran.value;
+      monEcran.value = texteActuel.substring(0, texteActuel.length - 1);
+    }
+
+    // Fonction pour ajouter un point (méthode de débutant simple)
+    function ajouterPoint() {
+      if (monEcran.value.indexOf('.') == -1) {
+        monEcran.value = monEcran.value + ".";
+      }
+    }
+
+    // Fonction principale de calcul
+    function faireLeCalcul() {
+      var calcul = monEcran.value;
+
+      // Remplacement manuel des mots scientifiques par les fonctions mathématiques de base de JavaScript
+      calcul = calcul.replace(/sin\(/g, "Math.sin( (Math.PI / 180) * ");
+      calcul = calcul.replace(/cos\(/g, "Math.cos( (Math.PI / 180) * ");
+      calcul = calcul.replace(/tan\(/g, "Math.tan( (Math.PI / 180) * ");
+      calcul = calcul.replace(/pi/g, "Math.PI");
+      calcul = calcul.replace(/e/g, "Math.E");
+      calcul = calcul.replace(/sqrt\(/g, "Math.sqrt(");
+      calcul = calcul.replace(/log\(/g, "Math.log(");
+      calcul = calcul.replace(/log2\(/g, "Math.log2(");
+      calcul = calcul.replace(/log10\(/g, "Math.log10(");
+      calcul = calcul.replace(/exp\(/g, "Math.exp(");
+      calcul = calcul.replace(/\^/g, "**"); // En JS moderne de débutant, la puissance c'est **
+
+      try {
+        // Utilisation de eval() qui est la fonction universelle apprise par les débutants pour évaluer une chaîne
+        var resultat = eval(calcul);
+        monEcran.value = resultat;
+      } catch(erreur) {
+        // En cas de problème ou de mauvaise syntaxe tapée
+        monEcran.value = "Erreur";
+      }
+    }
+  </script>
+
+</body>
+</html>
