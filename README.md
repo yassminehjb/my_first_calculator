@@ -1,26 +1,10 @@
-# My Little Calculator - Chaos Edition 
-
-Welcome to myyyy custom calculator app! Don't let the cozy, pastel-beige design and the cute teddy bears fool youuuuuuuuuuuuu  this is an engine of pure mathematical chaos. 
-
-It runs locally as a web app using Python (Flask) for the backbone, HTML for the buttons, and CSS for that clean aesthetic look.
-
----
-
-##  What is this project?
-
-Instead of building a boring, standard calculator that just gives you regular answers, we built a calculator with a huge attitude. It splits the interface into clear toggles and a giant button layout.
-
-### The Fun Features:
-* **The Magic `HAHAAAA` Button:** Triggers absolute chaos by throwing random operators or weird numbers into your calculation workspace.
-* **COMBO (x1000):** A massive button at the bottom that instantly multiplies your current display number by a thousand. Why? Because big numbers are better.
-* **Fat Fingers Mode:** A checkbox toggle. If you turn it on, the app simulates missing the key you wanted and types a completely random number instead.
-* **Passive-Aggressive Mode:** The calculator judges you. If you check this box, the subtitle updates with snarky comments mocking your math skills.
-* **Ransom Note Style:** Instantly scrambles the display text into an uglyyyyyy, criminal-style typewriter font when you want to feel dangerous.
-
----
-
+This is a simple scientific calculator project built by a teen! I
+t does regular math and some cool science math too.
+What it Can DoBasic Math: Plus, minus, times, and divide .
+Scientific Math:Exponents ;Square roots ;Sin, Cos, and Tan (Trigonometry for triangles)Logarithms 
+How to Use ItOpen the project files on your computer
 *
-
----
-
-*
+.Run the main file to open the calculator
+.Click the buttons or type your numbers to solve math problems!
+Built WithLanguage: Written in code (HTML/CSS/JavaScript or Python—change this to match whatever language you used!).
+Design: Made to look clean and easy to read.
